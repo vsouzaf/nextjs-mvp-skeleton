@@ -1,0 +1,41 @@
+services:
+  db-service:
+    container_name: db
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: sys
+      POSTGRES_USER: sys
+      POSTGRES_PASSWORD: sys
+    ports:
+      - 5432:5432
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./docker/db/script.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - app_network
+    tty: true
+    restart: on-failure
+  app-service:
+    container_name: app
+    build:
+      context: .
+    working_dir: /var/www
+    networks:
+      - app_network
+    links:
+      - db-service
+    depends_on:
+      - db-service
+    volumes:
+      - ./:/var/www
+      - ~/.ssh/:/root/.ssh/
+    ports:
+      - "80:80"
+      - "3000:3000"
+volumes:
+  db_data:
+
+networks:
+  app_network:
+    name: app_network
+    driver: bridge
