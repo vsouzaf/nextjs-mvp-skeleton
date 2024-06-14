@@ -17,7 +17,7 @@ RUN node -v
 RUN npm -v
 
 # Define o diretório de trabalho dentro do container
-WORKDIR /app
+WORKDIR /var/www
 
 # Copia os arquivos do projeto para o diretório de trabalho
 COPY . .

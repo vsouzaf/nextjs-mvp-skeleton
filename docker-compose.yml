@@ -3,14 +3,13 @@ services:
     container_name: db
     image: postgres:latest
     environment:
-      POSTGRES_DB: sys
-      POSTGRES_USER: sys
-      POSTGRES_PASSWORD: sys
+      POSTGRES_DB: admin
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
     ports:
       - 5432:5432
     volumes:
       - db_data:/var/lib/postgresql/data
-      - ./docker/db/script.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - app_network
     tty: true
