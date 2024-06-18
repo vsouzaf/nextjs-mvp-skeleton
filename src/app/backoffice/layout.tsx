@@ -3,14 +3,7 @@ import {Inter as FontSans} from "next/font/google"
 import "@/app/globals.css";
 import {cn} from "@/lib/utils";
 import {Sidebar} from "@/components/sidebar";
-import {
-    Breadcrumb,
-    BreadcrumbItem,
-    BreadcrumbLink,
-    BreadcrumbList,
-    BreadcrumbPage,
-    BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
+import {Breadcrumb} from "@/components/breadcrumb";
 
 const fontSans = FontSans({
     subsets: ["latin"],
@@ -40,21 +33,7 @@ export default function RootLayout({
                 <Sidebar className="hidden md:block" playlists={[]}/>
                 <div className="h-full col-span-4 lg:border-l">
                     <div className=" px-4 py-6 lg:px-8">
-                        <Breadcrumb>
-                            <BreadcrumbList>
-                                <BreadcrumbItem>
-                                    <BreadcrumbLink href="/">Home</BreadcrumbLink>
-                                </BreadcrumbItem>
-                                <BreadcrumbSeparator/>
-                                <BreadcrumbItem>
-                                    <BreadcrumbLink href="/components">Components</BreadcrumbLink>
-                                </BreadcrumbItem>
-                                <BreadcrumbSeparator/>
-                                <BreadcrumbItem>
-                                    <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
-                                </BreadcrumbItem>
-                            </BreadcrumbList>
-                        </Breadcrumb>
+                        <Breadcrumb/>
 
                         {children}
                     </div>
