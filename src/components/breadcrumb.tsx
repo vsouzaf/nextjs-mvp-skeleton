@@ -23,11 +23,11 @@ export function Breadcrumb(prpos: BreadcrumbProps) {
                 <BreadcrumbItem>
                     <BreadcrumbLink href="/">Início</BreadcrumbLink>
                 </BreadcrumbItem>
-                {pathNames.length > 0 && <BreadcrumbSeparator/>}
                 {pathNames.map((link, index) => {
                     let href = `/${pathNames.slice(0, index + 1).join('/')}`;
                     return (
                         <React.Fragment key={index}>
+                            <BreadcrumbSeparator/>
                             <BreadcrumbItem>
                                 <BreadcrumbLink href={href}> {link}
                             </BreadcrumbLink>
